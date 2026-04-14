@@ -9,6 +9,9 @@ dependencies = [
     "python-dotenv>=1.0.0",
 ]
 
+[project.scripts]
+app = "wsgi:app"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
