@@ -13,7 +13,8 @@ def create_app(config: ProspectConfig = None) -> Flask:
     app.config["MAX_CONTENT_LENGTH"] = cfg.MAX_UPLOAD_BYTES
     app.json.ensure_ascii = False
 
-    CORS(app, origins=[cfg.CORS_ORIGIN])
+    cors_origins = ["*"] if cfg.CORS_ORIGIN == "*" else [cfg.CORS_ORIGIN]
+    CORS(app, origins=cors_origins)
     setup_app_logger(app)
 
     from app.api.prospect_analysis_routes import prospect_analysis_bp
