@@ -22,7 +22,7 @@ class StripBackendMountPrefix:
     def __call__(self, environ, start_response):
         path = environ.get("PATH_INFO") or ""
         if path.startswith(self._PREFIX):
-            new_environ = dict(environ)
+            new_environ = {k: environ[k] for k in environ}
             new_environ["PATH_INFO"] = path[len(self._PREFIX) :] or "/"
             return self.wsgi_app(new_environ, start_response)
         return self.wsgi_app(environ, start_response)
