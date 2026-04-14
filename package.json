@@ -11,5 +11,16 @@
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
+  },
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "frontend",
+      "routePrefix": "/",
+      "framework": "vite"
+    },
+    "backend": {
+      "entrypoint": "backend",
+      "routePrefix": "/_/backend"
+    }
   }
 }
